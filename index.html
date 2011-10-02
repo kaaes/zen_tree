@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<title>Zen Tree</title>
+<link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+<link href="style.css" rel="stylesheet" />
+</head>
+<body>
+<h1>Zen Tree</h1>
+<div id="content"></div>
+<button id="change">I don`t like this tree. Get me new one!</button>
+<script src="tree.js"></script>
+<script>
+
+// canvas element and 2D context
+var canvas = document.createElement('canvas');
+canvas.width = 800; 
+canvas.height = 400; 
+
+var c = canvas.getContext('2d');
+c.translate(400, 350);
+
+var tree = TreeGenerator({
+  context : c,
+  generations : 11
+});
+
+var container = document.getElementById('content');
+container.appendChild(canvas);
+
+var trigger = document.getElementById('change');
+trigger.addEventListener('click', tree.create, false);
+
+tree.create()
+
+</script>
+</body>
+</html>
